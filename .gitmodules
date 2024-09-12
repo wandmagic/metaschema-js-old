@@ -1,0 +1,6 @@
+[submodule "j2cl"]
+	path = j2cl
+	url = https://github.com/google/j2cl.git
+[submodule "metaschema-java"]
+	path = metaschema-java
+	url = https://github.com/wandmagic/metaschema-java.git
