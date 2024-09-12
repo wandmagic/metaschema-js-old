@@ -1,0 +1,37 @@
+name: Build J2cl WASM app
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository and submodules
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      # Read the Bazel version from the .bazelversion file
+      - name: Get Bazel version
+        id: bazel-version
+        run: |
+          BAZEL_VERSION=$(cat .bazelversion)
+          echo "BAZEL_VERSION=$BAZEL_VERSION" >> $GITHUB_ENV
+
+      # Set up Bazel based on the version from .bazelversion
+      - name: Install Bazel
+        uses: bazelbuild/setup-bazel@v6.0.0
+        with:
+          bazel-version: ${{ env.BAZEL_VERSION }}
+
+      # Build the project
+      - name: Build J2cl WASM app
+        run: bazel build src/main/java/com/google/j2cl/samples/wasm:jsapp

@@ -1,0 +1,15 @@
+{
+  "name": "metaschema-js",
+  "version": "1.0.0",
+  "description": "j2cl transpilation of metaschema-java",
+  "main": "dist/index.js",
+  "scripts": {},
+  "keywords": [
+    "metaschema"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@bazel/bazelisk": "^1.21.0"
+  }
+}
